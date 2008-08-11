@@ -1,0 +1,12 @@
+plugin.tt_news {
+
+# cat=plugin.tt_news//60; type=int+; label= [ttnewscsc] default image position: default image position if no additional image options is set in ttnewscsc Extension Manager configuration
+imageOrient = 17
+
+# cat=plugin.tt_news//70; type=boolean; label= [ttnewscsc] image border: enables border around images
+imageBorder = 0
+
+# cat=plugin.tt_news//80; type=boolean; label= [ttnewscsc] image enlarge: enables image enlarge after click
+imageClickEnlarge = 1
+
+}

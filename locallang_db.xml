@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'ttnewscsc'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tab-short">Short</label>
+			<label index="tab-content">Content</label>
+			<label index="tab-images">Images</label>
+			<label index="tab-category">Category</label>
+			<label index="tab-special">Special</label>
+    </languageKey>
+
+	</data>
+</T3locallang>
