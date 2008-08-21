@@ -27,44 +27,47 @@
  */
 class tx_ttnewscsc {
 
-function extraItemMarkerProcessor($markerArray, $row, $lConf, &$pObj) {
+	function extraItemMarkerProcessor($markerArray, $row, $lConf, &$pObj) {
 
-	$this->cObj = t3lib_div::makeInstance('tslib_cObj');
+		if($pObj->config['code'] == 'SINGLE'){
+			$this->cObj = t3lib_div::makeInstance('tslib_cObj');
 
-	$confArr = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ttnewscsc']);
+			$confArr = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ttnewscsc']);
 
-	if(t3lib_extMgm::isLoaded('dam_ttnews')){
-		$damImgList = tx_dam_db::getReferencedFiles('tt_news', $row['uid'], 'tx_damnews_dam_images');
-		$imgList = implode(',',$damImgList['files']);
-		//clear imgPath if DAM is on
-		$pObj->conf['csc-imagetxt.']['20.']['imgPath'] = '';
-	} else {
-		$imgList = $row['image'];
-	}
+			if(t3lib_extMgm::isLoaded('dam_ttnews')){
+				$damImgList = tx_dam_db::getReferencedFiles('tt_news', $row['uid'], 'tx_damnews_dam_images');
+				$imgList = implode(',',$damImgList['files']);
+				//clear imgPath if DAM is on
+				$pObj->conf['csc-imagetxt.']['20.']['imgPath'] = '';
+			} else {
+				$imgList = $row['image'];
+			}
 
-	$insertValuesArray['images'] = $imgList;
-	$insertValuesArray['imagecaption'] = $row['imagecaption'];
-	$insertValuesArray['alTtext'] = $row['imagealttext'];
-	$insertValuesArray['titleText'] = $row['imagetitletext'];
-	$insertValuesArray['imageorient'] = $row['imageorient'];
-	$insertValuesArray['imagewidth'] = $row['imagewidth'];
-	$insertValuesArray['imagecols'] = $row['imagecols'];
-	$insertValuesArray['bodytext'] = $row['bodytext'];
+			$insertValuesArray['images'] = $imgList;
+			$insertValuesArray['imagecaption'] = $row['imagecaption'];
+			$insertValuesArray['alTtext'] = $row['imagealttext'];
+			$insertValuesArray['titleText'] = $row['imagetitletext'];
+			$insertValuesArray['imageorient'] = $row['imageorient'];
+			$insertValuesArray['imagewidth'] = $row['imagewidth'];
+			$insertValuesArray['imagecols'] = $row['imagecols'];
+			$insertValuesArray['bodytext'] = $row['bodytext'];
 
-	if(isset($confArr['additionalImagesOptions']) && $confArr['additionalImagesOptions'] == 1){
-		$insertValuesArray['additionalImagesOptions'] = 1;
-	}else{
-		$insertValuesArray['additionalImagesOptions'] = 0;
-	}
+			if(isset($confArr['additionalImagesOptions']) && $confArr['additionalImagesOptions'] == 1){
+				$insertValuesArray['additionalImagesOptions'] = 1;
+			}else{
+				$insertValuesArray['additionalImagesOptions'] = 0;
+			}
 
-	$this->cObj->data = $insertValuesArray;
+			$this->cObj->data = $insertValuesArray;
 
-	$content = $this->cObj->cObjGetSingle($pObj->conf['csc-imagetxt'],$pObj->conf['csc-imagetxt.']);
+			$content = $this->cObj->cObjGetSingle($pObj->conf['csc-imagetxt'],$pObj->conf['csc-imagetxt.']);
 
-	$markerArray['###NEWS_CSC###'] = $content;
+			$markerArray['###NEWS_CONTENT###'] = $content;
+			$markerArray['###NEWS_IMAGE###'] = '';
 
-	return $markerArray;
-
+			
+		}
+		return $markerArray;
 	}
 }
 
