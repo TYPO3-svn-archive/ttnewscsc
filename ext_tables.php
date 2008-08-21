@@ -2,8 +2,6 @@
 
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
-if(TYPO3_MODE == 'BE') {
-
 t3lib_extMgm::addStaticFile($_EXTKEY, 'static/', 'tt_news css styles content');
 
 $confArr = unserialize($_EXTCONF);
@@ -86,5 +84,5 @@ if(isset($confArr['shortAsTabWithRTE']) && $confArr['shortAsTabWithRTE'] == 1) {
 	$TCA['tt_news']['types']['0']['showitem'] = t3lib_div::rmFromList(' short',$TCA['tt_news']['types']['0']['showitem']);
 	t3lib_extMgm::addToAllTCAtypes('tt_news','--div--;LLL:EXT:ttnewscsc/locallang_db.xml:tab-short,short;;4;richtext:rte_transform[flag=rte_enabled|mode=ts];4-4-4,','','after:bodytext');
 	}
-}
+
 ?>
