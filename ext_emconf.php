@@ -3,6 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext: "ttnewscsc"
 #
+# Auto generated 11-08-2008 15:32
 #
 # Manual updates:
 # Only the data in the array - anything else is removed by next write.
@@ -16,7 +17,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'author' => 'Krystian Szymukowicz',
 	'author_email' => 'http://www.prolabium.com',
 	'shy' => '',
-	'dependencies' => 'tt_news,css_styled_content',
+	'dependencies' => 'tt_news',
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
@@ -40,6 +41,7 @@ $EM_CONF[$_EXTKEY] = array(
 	),
 	'suggests' => array(
 	),
+	'_md5_values_when_last_written' => 'a:10:{s:22:"class.tx_ttnewscsc.php";s:4:"499f";s:21:"ext_conf_template.txt";s:4:"f804";s:12:"ext_icon.gif";s:4:"1bdc";s:17:"ext_localconf.php";s:4:"a618";s:14:"ext_tables.php";s:4:"0967";s:14:"ext_tables.sql";s:4:"1af4";s:16:"locallang_db.xml";s:4:"150d";s:14:"doc/manual.sxw";s:4:"2957";s:20:"static/constants.txt";s:4:"0062";s:16:"static/setup.txt";s:4:"1d94";}',
 );
 
 ?>
