@@ -1,50 +1,30 @@
 plugin.tt_news {
+	
+	rgnewsce {
+		
+		enable = {$plugin.tt_news.rgnewsce.enable} 
+	
+		renderSingleInListAndLatest = {$plugin.tt_news.rgnewsce.renderSingleInListAndLatest}
 
-	csc-imagetxt < tt_content.textpic
+		displaySingle {		
 
-	csc-imagetxt.20 {
-
-	maxW.override.field = imagewidth
-	imgList.override.field = images
-
-	textPos.override.cObject = COA
-	textPos.override.cObject {
-
-		10 = TEXT
-		10.value = {$plugin.tt_news.imageOrient}
-
-		10.if {
-	  		value = 0
-	  		equals.field = additionalImagesOptions
-			}
-
-		20 = TEXT
-		20.field = imageorient
-		20.if {
-	  		value = 1
-	  		equals.field = additionalImagesOptions
-			}
-		20.override.cObject = TEXT
-		20.override.cObject {
-						value = {$plugin.tt_news.imageOrient}
-						if {
-							value = 127
-		  					equals.field = imageorient
-						}
-					}
-		}
-
-	layout.key.override.cObject < .textPos.override.cObject
-
-	border.override = {$plugin.tt_news.imageBorder}
-
-	1 {
-	  imageLinkWrap.enable.field >
-	  imageLinkWrap.enable.override = {$plugin.tt_news.imageClickEnlarge}
-	  }
-
-
-	} //csc-imagetxt.20
-
-} // plugin.tt_news
-
+			renderWithCssStyledContent = {$plugin.tt_news.rgnewsce.displaySingle.renderWithCssStyledContent}
+	
+			image {
+				imageorient = {$plugin.tt_news.rgnewsce.displaySingle.image.imageorient}
+				imageborder = {$plugin.tt_news.rgnewsce.displaySingle.image.imageborder}
+				image_zoom = {$plugin.tt_news.rgnewsce.displaySingle.image.image_zoom}
+				imagecols = {$plugin.tt_news.rgnewsce.displaySingle.image.imagecols}
+				}	
+			
+			csc-imagetxt < tt_content.textpic
+			csc-imagetxt.20 {
+				imgPath = uploads/pics/
+				imgList.override.field = image
+				}
+				
+			csc-txt < tt_content.text.20
+		
+	 	}
+	}
+}
